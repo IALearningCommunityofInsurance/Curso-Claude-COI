@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S20 · El sistema personal COI con Claude está completo · Curso Claude COI</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+:root{--ink:#0E0E0E;--paper:#F7F5F0;--gold:#C89646;--navy:#183577;--coral:#E4382E;--smoke:#E8E5DE;--mid:#7A7570;--white:#FFFFFF;--semana:#0E0E0E;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
+.topbar{background:var(--ink);padding:0 48px;height:52px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:100;}
+.topbar-brand{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;}
+.topbar-brand strong{color:var(--gold);}
+.topbar-nav{display:flex;gap:8px;}
+.topbar-nav a{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.4);text-decoration:none;padding:4px 12px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;letter-spacing:1px;text-transform:uppercase;transition:all 0.15s;}
+.topbar-nav a:hover{border-color:var(--gold);color:var(--gold);}
+.hero{background:var(--semana);padding:60px 48px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:48px 48px;}
+.hero-bg{position:absolute;right:-20px;bottom:-40px;font-family:'Playfair Display',serif;font-size:280px;font-weight:900;color:rgba(255,255,255,0.05);line-height:1;user-select:none;}
+.hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--gold);flex-shrink:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,46px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.5px;margin-bottom:12px;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.55);max-width:560px;line-height:1.5;margin-top:8px;}
+.hero-meta{display:flex;gap:0;margin-top:36px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;overflow:hidden;max-width:520px;}
+.meta-item{flex:1;padding:14px 16px;border-right:1px solid rgba(255,255,255,0.1);text-align:center;}
+.meta-item:last-child{border-right:none;}
+.meta-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:3px;}
+.meta-lbl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.content{max-width:860px;margin:0 auto;padding:0 48px 80px;}
+.bloque{margin-top:56px;}
+.bloque-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--smoke);}
+.bloque-icono{width:40px;height:40px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;flex-shrink:0;}
+.icono-c{background:var(--navy);color:#fff;}
+.icono-p{background:var(--gold);color:#fff;}
+.icono-t{background:var(--coral);color:#fff;}
+.bloque-titulo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.bloque-tiempo{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.bloque-body h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);margin:28px 0 10px;}
+.bloque-body h4{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mid);margin:24px 0 8px;}
+.bloque-body p{font-size:15px;color:#2A2A2A;margin-bottom:14px;}
+.bloque-body ul,.bloque-body ol{padding-left:20px;margin-bottom:14px;}
+.bloque-body li{font-size:15px;color:#2A2A2A;margin-bottom:6px;}
+.bloque-body strong{color:var(--ink);}
+.bloque-body table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+.bloque-body th{background:var(--ink);color:#fff;padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.bloque-body td{padding:10px 14px;border-bottom:1px solid var(--smoke);vertical-align:top;}
+.bloque-body tr:nth-child(even) td{background:rgba(0,0,0,0.02);}
+.bloque-body pre{background:var(--ink);color:#E8D5A0;padding:20px 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;overflow-x:auto;margin:16px 0;border-left:3px solid var(--gold);white-space:pre-wrap;}
+.bloque-body code{font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:2px;color:var(--ink);}
+.bloque-body blockquote{border-left:3px solid var(--gold);padding:12px 20px;margin:16px 0;background:rgba(200,150,70,0.06);border-radius:0 4px 4px 0;}
+.bloque-body blockquote p{color:var(--mid);font-style:italic;margin:0;}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:20px;}
+.nav-bottom{background:var(--ink);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--gold);margin-top:60px;}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;padding:10px 18px;border:1px solid rgba(255,255,255,0.15);border-radius:3px;transition:all 0.15s;}
+.nav-btn:hover{border-color:var(--gold);color:var(--gold);}
+.nav-center{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:2px;text-transform:uppercase;text-align:center;}
+.nav-center a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.nav-center a:hover{color:var(--gold);}
+@media(max-width:700px){.topbar{padding:0 20px;}.hero{padding:40px 20px 36px;}.content{padding:0 20px 60px;}.nav-bottom{padding:24px 20px;flex-direction:column;gap:16px;}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-brand"><strong>COI</strong> · Curso Claude Agosto 2025</div>
+  <nav class="topbar-nav">
+    <a href="itinerario-curso-claude-agosto.html">&#8592; Itinerario</a>
+    <a href="sesion-19-claude.html">S19</a>
+    <a href="itinerario-curso-claude-agosto.html">S20</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-bg">20</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Sesión 20 · Lunes 1 septiembre 2025 · Cierre del curso · Semana 4 · Automatización</div>
+    <h1>El sistema personal COI con Claude está completo</h1>
+    <p class="hero-sub">20 plantillas. Sistema Personal V1.0. Manifiesto de cierre. Plantilla de revisión anual.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><div class="meta-val">15'</div><div class="meta-lbl">Concepto</div></div>
+      <div class="meta-item"><div class="meta-val">30'</div><div class="meta-lbl">Práctica</div></div>
+      <div class="meta-item"><div class="meta-val">10'</div><div class="meta-lbl">Reflexión</div></div>
+      <div class="meta-item"><div class="meta-val">P20</div><div class="meta-lbl">Plantilla</div></div>
+    </div>
+  </div>
+</section>
+<main class="content">
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-c">15'</div>
+      <div><div class="bloque-titulo">Concepto central</div><div class="bloque-tiempo">Teoría y mecanismo — 15 minutos</div></div>
+    </div>
+    <div class="bloque-body"><p>Veinte sesiones. Veinte plantillas. Cuatro entregables reales. Un sistema documentado.</p><h3>Lo que tienes al final de este curso</h3><table><tr><th>Bloque</th><th>Plantillas</th><th>Enfoque</th></tr><tr><td>Operativos base</td><td>P01–P05</td><td>Contexto, pre-intención, anti-alucinación, revisión, RTCFR</td></tr><tr><td>Técnicas avanzadas</td><td>P06–P10</td><td>CoT, Few-Shot, Proyecto, Formatos, Integrador</td></tr><tr><td>Producción</td><td>P11–P15</td><td>Análisis documental, búsqueda web, flujo editorial, informes</td></tr><tr><td>Automatización</td><td>P16–P20</td><td>Encadenamiento, ponencias, gestión del conocimiento, meta-prompt, sistema</td></tr></table><h3>Los 4 entregables producidos</h3><ol><li>Biblioteca P01–P05 operativa</li><li>Flujo editorial + Proyecto COI configurado</li><li>Informe de mercado publicable bajo marca COI</li><li>Sistema Personal COI V1.0</li></ol></div>
+  </div>
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-p">30'</div>
+      <div><div class="bloque-titulo">Práctica real</div><div class="bloque-tiempo">Ejercicios con material COI — 30 minutos</div></div>
+    </div>
+    <div class="bloque-body"><h3>El sistema documentado</h3><p><strong>Mapa de uso por tarea:</strong></p><pre>Artículo Insur·Insights: P01 + P03 + P05 + P07 + Flujo S13
+Informe de mercado: P01 + P11 + P14 + P15
+Ponencia/conferencia: P01 + P17
+LinkedIn/distribución: P09 (formato D) + P16 (patrón Transformación)
+Análisis urgente: P02 + P06 (CoT) + P03
+Nueva tarea desconocida: P19 (meta-prompt) → generar el prompt adecuado</pre>
+<h3>Los 10 principios del sistema</h3><ol><li>Un prompt pobre produce un output pobre</li><li>El contexto es más valioso que la instrucción</li><li>Los datos los aportas tú; Claude los razona</li><li>La ventana de contexto es un recurso limitado</li><li>El formato importa tanto como el contenido</li><li>La iteración es mejor que el prompt perfecto</li><li>Las plantillas son activos, no recetas. Adapta, no copies</li><li>El Proyecto COI es tu memoria institucional en Claude</li><li>La revisión humana no es opcional</li><li>El meta-prompt desbloquea todo lo demás</li></ol></div>
+  </div>
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-t">5'</div>
+      <div><div class="bloque-titulo">Plantilla para la Biblioteca COI</div><div class="bloque-tiempo">Tu activo permanente de esta sesión</div></div>
+    </div>
+    <div class="bloque-body">
+      <div class="pill">P20 · Sistema Personal COI V1.0</div>
+      <pre>SISTEMA PERSONAL COI V1.0 (P20)
+
+FLUJO SEMANAL:
+Lunes: Revisión agenda editorial + P18 (patrón mensual si aplica)
+Martes-Miércoles: Producción principal (artículo o informe)
+Jueves: Distribución (LinkedIn, newsletter) con P09 + P16
+Viernes: Revisión de lo producido + actualización biblioteca si hay aprendizaje
+
+REVISIÓN ANUAL — Fecha: 1 septiembre 2026
+¿Uso regularmente al menos 15 de las 20 plantillas?
+¿El Proyecto COI está actualizado?
+¿Hay nuevas funciones de Claude que aprovechar?
+¿Qué plantillas han quedado obsoletas?
+¿Qué nuevas tareas he descubierto que Claude hace bien?</pre><p>Próximo paso: <strong>Nivel 2 — 6 módulos, 24 sesiones, infraestructura editorial completa de COI con Claude.</strong></p>
+    </div>
+  </div>
+</main>
+<nav class="nav-bottom">
+  <a class="nav-btn" href="sesion-19-claude.html">&#8592; S19</a>
+  <div class="nav-center"><a href="itinerario-curso-claude-agosto.html">Ver itinerario completo</a><br><span>Sesión 20 de 20</span></div>
+  <a class="nav-btn" href="itinerario-curso-claude-agosto.html">S20 &#8594;</a>
+</nav>
+</body>
+</html>

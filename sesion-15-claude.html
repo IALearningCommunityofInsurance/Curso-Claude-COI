@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S15 · Cierre de Semana 3: informe de mercado real como entregable · Curso Claude COI</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+:root{--ink:#0E0E0E;--paper:#F7F5F0;--gold:#C89646;--navy:#183577;--coral:#E4382E;--smoke:#E8E5DE;--mid:#7A7570;--white:#FFFFFF;--semana:#1A7F4E;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
+.topbar{background:var(--ink);padding:0 48px;height:52px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:100;}
+.topbar-brand{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;}
+.topbar-brand strong{color:var(--gold);}
+.topbar-nav{display:flex;gap:8px;}
+.topbar-nav a{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.4);text-decoration:none;padding:4px 12px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;letter-spacing:1px;text-transform:uppercase;transition:all 0.15s;}
+.topbar-nav a:hover{border-color:var(--gold);color:var(--gold);}
+.hero{background:var(--semana);padding:60px 48px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:48px 48px;}
+.hero-bg{position:absolute;right:-20px;bottom:-40px;font-family:'Playfair Display',serif;font-size:280px;font-weight:900;color:rgba(255,255,255,0.05);line-height:1;user-select:none;}
+.hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--gold);flex-shrink:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,46px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.5px;margin-bottom:12px;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.55);max-width:560px;line-height:1.5;margin-top:8px;}
+.hero-meta{display:flex;gap:0;margin-top:36px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;overflow:hidden;max-width:520px;}
+.meta-item{flex:1;padding:14px 16px;border-right:1px solid rgba(255,255,255,0.1);text-align:center;}
+.meta-item:last-child{border-right:none;}
+.meta-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:3px;}
+.meta-lbl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.content{max-width:860px;margin:0 auto;padding:0 48px 80px;}
+.bloque{margin-top:56px;}
+.bloque-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--smoke);}
+.bloque-icono{width:40px;height:40px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;flex-shrink:0;}
+.icono-c{background:var(--navy);color:#fff;}
+.icono-p{background:var(--gold);color:#fff;}
+.icono-t{background:var(--coral);color:#fff;}
+.bloque-titulo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.bloque-tiempo{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.bloque-body h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);margin:28px 0 10px;}
+.bloque-body h4{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mid);margin:24px 0 8px;}
+.bloque-body p{font-size:15px;color:#2A2A2A;margin-bottom:14px;}
+.bloque-body ul,.bloque-body ol{padding-left:20px;margin-bottom:14px;}
+.bloque-body li{font-size:15px;color:#2A2A2A;margin-bottom:6px;}
+.bloque-body strong{color:var(--ink);}
+.bloque-body table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+.bloque-body th{background:var(--ink);color:#fff;padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.bloque-body td{padding:10px 14px;border-bottom:1px solid var(--smoke);vertical-align:top;}
+.bloque-body tr:nth-child(even) td{background:rgba(0,0,0,0.02);}
+.bloque-body pre{background:var(--ink);color:#E8D5A0;padding:20px 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;overflow-x:auto;margin:16px 0;border-left:3px solid var(--gold);white-space:pre-wrap;}
+.bloque-body code{font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:2px;color:var(--ink);}
+.bloque-body blockquote{border-left:3px solid var(--gold);padding:12px 20px;margin:16px 0;background:rgba(200,150,70,0.06);border-radius:0 4px 4px 0;}
+.bloque-body blockquote p{color:var(--mid);font-style:italic;margin:0;}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:20px;}
+.nav-bottom{background:var(--ink);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--gold);margin-top:60px;}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;padding:10px 18px;border:1px solid rgba(255,255,255,0.15);border-radius:3px;transition:all 0.15s;}
+.nav-btn:hover{border-color:var(--gold);color:var(--gold);}
+.nav-center{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:2px;text-transform:uppercase;text-align:center;}
+.nav-center a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.nav-center a:hover{color:var(--gold);}
+@media(max-width:700px){.topbar{padding:0 20px;}.hero{padding:40px 20px 36px;}.content{padding:0 20px 60px;}.nav-bottom{padding:24px 20px;flex-direction:column;gap:16px;}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-brand"><strong>COI</strong> · Curso Claude Agosto 2025</div>
+  <nav class="topbar-nav">
+    <a href="itinerario-curso-claude-agosto.html">&#8592; Itinerario</a>
+    <a href="sesion-14-claude.html">S14</a>
+    <a href="sesion-16-claude.html">S16</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-bg">15</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Sesión 15 · Lunes 25 agosto 2025 · Cierre Semana 3 · Semana 3 · Producción real</div>
+    <h1>Cierre de Semana 3:<em> informe de mercado real como entregable</em></h1>
+    <p class="hero-sub">Informe de tres secciones publicable bajo marca COI. 15 plantillas acumuladas en la Biblioteca.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><div class="meta-val">15'</div><div class="meta-lbl">Concepto</div></div>
+      <div class="meta-item"><div class="meta-val">30'</div><div class="meta-lbl">Práctica</div></div>
+      <div class="meta-item"><div class="meta-val">10'</div><div class="meta-lbl">Reflexión</div></div>
+      <div class="meta-item"><div class="meta-val">P15</div><div class="meta-lbl">Plantilla</div></div>
+    </div>
+  </div>
+</section>
+<main class="content">
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-c">15'</div>
+      <div><div class="bloque-titulo">Concepto central</div><div class="bloque-tiempo">Teoría y mecanismo — 15 minutos</div></div>
+    </div>
+    <div class="bloque-body"><p>Esta sesión es el cierre de la Semana 3. El objetivo es producir el <strong>Entregable S3:</strong> un informe de mercado de tres secciones, publicable bajo marca COI.</p><h3>Lo que integra esta sesión</h3><ul><li>Análisis documental (S11)</li><li>Búsqueda web si es necesario (S12)</li><li>Flujo editorial 6 fases (S13)</li><li>Técnica de dos prompts para informes (S14)</li><li>Todo el framework RTCFR y técnicas de S1-S2</li></ul><h3>El Entregable S3 es</h3><ul><li>Un informe de 1.500-2.000 palabras</li><li>Tres secciones analíticas</li><li>Al menos una tabla de datos</li><li>Perspectiva editorial COI propia</li><li>Listo para publicar en COI Magazine o como informe standalone</li></ul><p>Al terminar esta sesión: <strong>15 plantillas acumuladas (P01-P15).</strong></p></div>
+  </div>
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-p">30'</div>
+      <div><div class="bloque-titulo">Práctica real</div><div class="bloque-tiempo">Ejercicios con material COI — 30 minutos</div></div>
+    </div>
+    <div class="bloque-body"><h3>Producción del Entregable S3</h3><p>Elige un tema de mercado relevante para COI y ejecuta el flujo completo:</p><pre>PASO 1 - BRIEF:
+"Vamos a producir el Informe de Mercado COI sobre [TEMA].
+Audiencia: directivos del sector asegurador iberoamericano
+Tesis: [tu tesis]
+Estructura objetivo: 3 secciones + tabla + conclusión
+Extensión: 1.500-2.000 palabras"
+
+PASO 2 - ARQUITECTURA (P14): Diseñar y aprobar la estructura
+
+PASO 3 - INVESTIGACIÓN: P11 con documentos + P12 con búsqueda web si aplica
+
+PASO 4 - DESARROLLO: Sección por sección con P14
+
+PASO 5 - REVISIÓN GLOBAL:
+"¿Hay coherencia entre las tres secciones?
+¿La conclusión se desprende del análisis?
+¿Algún dato necesita verificación adicional?
+Lista los 5 cambios prioritarios."
+
+PASO 6 - VERSION FINAL:
+"Entrega la versión final lista para publicar bajo marca COI.
+Incluye portada conceptual (título + subtítulo + fecha)."</pre></div>
+  </div>
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-t">5'</div>
+      <div><div class="bloque-titulo">Plantilla para la Biblioteca COI</div><div class="bloque-tiempo">Tu activo permanente de esta sesión</div></div>
+    </div>
+    <div class="bloque-body">
+      <div class="pill">P15 · Informe mercado COI</div>
+      <pre>INFORME DE MERCADO COI — PLANTILLA MAESTRA (P15)
+
+BRIEF:
+Informe [tipo] sobre [tema] / Período: [fechas] / Tesis: [en una frase]
+Audiencia: directivos sector asegurador iberoamericano / Extensión: 1.500-2.000 palabras
+
+ARQUITECTURA (aprobar antes de desarrollar):
+- Título del informe + subtítulo editorial
+- Sección 1: Contexto y situación actual
+- Sección 2: Análisis de tendencias
+- Sección 3: Perspectiva y retos
+- Tabla: [indicadores clave con fuentes]
+- Conclusión: implicaciones para el sector
+
+METADATA FINAL:
+Título SEO (60 caracteres máx)
+Descripción (150 caracteres)
+Etiquetas: [3-5 términos clave]
+Categoría COI: [mercado / regulación / distribución / tecnología]</pre>
+    </div>
+  </div>
+</main>
+<nav class="nav-bottom">
+  <a class="nav-btn" href="sesion-14-claude.html">&#8592; S14</a>
+  <div class="nav-center"><a href="itinerario-curso-claude-agosto.html">Ver itinerario completo</a><br><span>Sesión 15 de 20</span></div>
+  <a class="nav-btn" href="sesion-16-claude.html">S16 &#8594;</a>
+</nav>
+</body>
+</html>
