@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario · Curso de Claude desde Casa · COI Agosto 2025</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  /* ── TOKENS ── */
+  :root {
+    --ink:    #0E0E0E;
+    --paper:  #F7F5F0;
+    --gold:   #C89646;
+    --gold-lt:#E8D5A0;
+    --navy:   #183577;
+    --coral:  #E4382E;
+    --smoke:  #E8E5DE;
+    --mid:    #7A7570;
+    --blanco: #FFFFFF;
+
+    /* semana colores */
+    --s1: #183577;
+    --s2: #5B2D8E;
+    --s3: #7A1020;
+    --s4: #7A4A00;
+
+    /* sesión accents — uno por sesión */
+    --c06:#2D3A8C; --c07:#5B2D8E; --c08:#0A7B7B;
+    --c09:#C05000; --c10:#111;
+    --c11:#2D3A8C; --c12:#007A8A; --c13:#6B0F2A;
+    --c14:#2E4057; --c15:#1A7F4E;
+    --c16:#7A4A00; --c17:#4A1080; --c18:#3D5A2A;
+    --c19:#005566; --c20:#0E0E0E;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background:var(--ink);
+    padding:0 48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:52px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    border-bottom:2px solid var(--gold);
+  }
+  .masthead-brand {
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(255,255,255,0.45);
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+  .masthead-brand strong { color:var(--gold); }
+  .masthead-nav {
+    display:flex;
+    gap:4px;
+  }
+  .nav-semana {
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.35);
+    padding:4px 10px;
+    border-radius:2px;
+    text-decoration:none;
+    transition:all 0.15s;
+  }
+  .nav-semana:hover { background:rgba(255,255,255,0.08); color:var(--gold); }
+  .nav-semana.s1h:hover{color:#6A9FFF;}
+  .nav-semana.s2h:hover{color:#C490FF;}
+  .nav-semana.s3h:hover{color:#FF8090;}
+  .nav-semana.s4h:hover{color:#FFD080;}
+
+  /* ── HERO ── */
+  .hero {
+    background:var(--ink);
+    padding:80px 48px 72px;
+    position:relative;
+    overflow:hidden;
+  }
+  /* Rejilla sutil de fondo */
+  .hero::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(200,150,70,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,150,70,0.04) 1px, transparent 1px);
+    background-size:56px 56px;
+  }
+  /* Banda dorada lateral derecha */
+  .hero::after {
+    content:'';
+    position:absolute;
+    top:0; right:0; bottom:0;
+    width:4px;
+    background:linear-gradient(to bottom, var(--gold), var(--coral), var(--gold));
+    opacity:0.7;
+  }
+  /* Número de fondo */
+  .hero-bg-num {
+    position:absolute;
+    right:-24px; bottom:-40px;
+    font-family:'Playfair Display',serif;
+    font-size:320px;
+    font-weight:900;
+    color:rgba(200,150,70,0.04);
+    line-height:1;
+    user-select:none;
+    pointer-events:none;
+  }
+  .hero-inner {
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    margin:0 auto;
+  }
+  .hero-eyebrow {
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:20px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .hero-eyebrow::before {
+    content:'';
+    display:block;
+    width:32px;
+    height:2px;
+    background:var(--gold);
+    flex-shrink:0;
+  }
+  .hero h1 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(36px, 5vw, 60px);
+    font-weight:900;
+    color:#fff;
+    line-height:1.08;
+    margin-bottom:8px;
+    letter-spacing:-1px;
+  }
+  .hero h1 em {
+    font-style:italic;
+    color:var(--gold);
+  }
+  .hero-subtitle {
+    font-size:17px;
+    color:rgba(255,255,255,0.5);
+    margin-top:18px;
+    max-width:520px;
+    line-height:1.5;
+  }
+  /* Estadísticas del curso */
+  .hero-stats {
+    display:flex;
+    gap:0;
+    margin-top:44px;
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:4px;
+    overflow:hidden;
+    max-width:600px;
+  }
+  .hero-stat {
+    flex:1;
+    padding:18px 20px;
+    border-right:1px solid rgba(255,255,255,0.1);
+    text-align:center;
+  }
+  .hero-stat:last-child { border-right:none; }
+  .hs-num {
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+    font-weight:900;
+    color:var(--gold);
+    line-height:1;
+    margin-bottom:4px;
+  }
+  .hs-label {
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.35);
+  }
+
+  /* ── SEMANA HEADER ── */
+  .semana-section {
+    margin:0;
+    scroll-margin-top:52px;
+  }
+  .semana-head {
+    padding:40px 48px 28px;
+    position:relative;
+    overflow:hidden;
+  }
+  .semana-head.s1 { background:var(--s1); }
+  .semana-head.s2 { background:var(--s2); }
+  .semana-head.s3 { background:var(--s3); }
+  .semana-head.s4 { background:var(--s4); }
+  /* Número grande de fondo */
+  .semana-head-bg {
+    position:absolute;
+    right:32px; top:-20px;
+    font-family:'Playfair Display',serif;
+    font-size:200px;
+    font-weight:900;
+    color:rgba(255,255,255,0.05);
+    line-height:1;
+    user-select:none;
+  }
+  .semana-inner {
+    position:relative;
+    z-index:1;
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:32px;
+  }
+  .semana-num {
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.4);
+    margin-bottom:8px;
+  }
+  .semana-titulo {
+    font-family:'Playfair Display',serif;
+    font-size:26px;
+    font-weight:700;
+    color:#fff;
+    line-height:1.2;
+  }
+  .semana-enfoque {
+    font-size:13px;
+    color:rgba(255,255,255,0.55);
+    margin-top:6px;
+    max-width:400px;
+  }
+  .semana-rango {
+    text-align:right;
+    flex-shrink:0;
+  }
+  .semana-fechas {
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:rgba(255,255,255,0.4);
+    letter-spacing:1px;
+  }
+  .semana-entregable {
+    margin-top:8px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* ── GRID DE SESIONES ── */
+  .sesiones-grid {
+    background:var(--paper);
+    padding:0 48px 8px;
+    border-bottom:3px solid var(--smoke);
+  }
+  .sesiones-inner {
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+
+  /* ── TARJETA DE SESIÓN ── */
+  .sesion-row {
+    display:grid;
+    grid-template-columns:72px 1fr auto;
+    gap:0;
+    padding:22px 0;
+    border-bottom:1px solid var(--smoke);
+    align-items:start;
+    transition:background 0.15s;
+    border-radius:3px;
+    text-decoration:none;
+    color:inherit;
+  }
+  .sesion-row:last-child { border-bottom:none; }
+  .sesion-row:hover { background:rgba(0,0,0,0.025); }
+
+  /* Columna izquierda: número grande */
+  .sn-num {
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    font-weight:900;
+    line-height:1;
+    padding-top:2px;
+    letter-spacing:-1px;
+    flex-shrink:0;
+  }
+
+  /* Columna central: contenido */
+  .sn-body { padding-left:4px; }
+  .sn-dia {
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--mid);
+    margin-bottom:5px;
+  }
+  .sn-titulo {
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+    font-weight:700;
+    color:var(--ink);
+    line-height:1.2;
+    margin-bottom:5px;
+  }
+  .sn-subtitulo {
+    font-size:13px;
+    color:var(--mid);
+    margin-bottom:10px;
+    line-height:1.4;
+  }
+  /* Chips de técnicas */
+  .sn-chips { display:flex; gap:6px; flex-wrap:wrap; }
+  .chip {
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:2px;
+    border:1px solid;
+  }
+  .chip-navy  { color:var(--navy);  border-color:rgba(24,53,119,0.25); background:rgba(24,53,119,0.06);}
+  .chip-gold  { color:#8A6A20;      border-color:rgba(200,150,70,0.3);  background:rgba(200,150,70,0.08);}
+  .chip-coral { color:#B02820;      border-color:rgba(228,56,46,0.25); background:rgba(228,56,46,0.06);}
+  .chip-green { color:#1A7F4E;      border-color:rgba(26,127,78,0.25); background:rgba(26,127,78,0.06);}
+  .chip-gray  { color:var(--mid);   border-color:var(--smoke);          background:rgba(0,0,0,0.03);}
+
+  /* Columna derecha: plantilla + enlace */
+  .sn-right {
+    text-align:right;
+    padding-left:16px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:10px;
+    padding-top:4px;
+  }
+  .sn-plantilla {
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--gold);
+    font-weight:600;
+    letter-spacing:1px;
+  }
+  .sn-link {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--ink);
+    text-decoration:none;
+    padding:6px 12px;
+    border:1.5px solid var(--smoke);
+    border-radius:3px;
+    background:var(--blanco);
+    transition:all 0.15s;
+    white-space:nowrap;
+  }
+  .sn-link:hover {
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+  .sn-link svg { width:10px; height:10px; }
+
+  /* Sesión de cierre — styling especial */
+  .sesion-row.cierre .sn-titulo { font-style:italic; }
+  .sesion-row.cierre .sn-num { color:var(--gold); }
+
+  /* ── SEPARADOR DE SEMANA ── */
+  .divider-semana {
+    height:4px;
+    background:linear-gradient(90deg, var(--smoke), transparent);
+    margin:0;
+  }
+
+  /* ── LEYENDA ── */
+  .leyenda {
+    background:var(--blanco);
+    border-top:1px solid var(--smoke);
+    padding:32px 48px;
+  }
+  .leyenda-inner {
+    max-width:900px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    gap:24px;
+  }
+  .leyenda-bloque h4 {
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--mid);
+    margin-bottom:10px;
+  }
+  .leyenda-item {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:6px;
+    font-size:12px;
+    color:var(--ink);
+  }
+  .leyenda-dot {
+    width:8px; height:8px;
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background:var(--ink);
+    padding:28px 48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-top:2px solid var(--gold);
+  }
+  .sf-left {
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:rgba(255,255,255,0.3);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+  }
+  .sf-left strong { color:var(--gold); }
+  .sf-right {
+    font-size:11px;
+    color:rgba(255,255,255,0.25);
+    letter-spacing:1px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:700px) {
+    .masthead { padding:0 20px; }
+    .masthead-nav { display:none; }
+    .hero { padding:48px 20px 48px; }
+    .hero-stats { max-width:100%; }
+    .semana-head { padding:28px 20px 20px; }
+    .semana-inner { flex-direction:column; gap:12px; }
+    .semana-rango { text-align:left; }
+    .sesiones-grid { padding:0 20px 8px; }
+    .sesion-row { grid-template-columns:52px 1fr; }
+    .sn-right { display:none; }
+    .leyenda { padding:24px 20px; }
+    .leyenda-inner { grid-template-columns:1fr 1fr; }
+    .site-footer { flex-direction:column; gap:8px; padding:20px; text-align:center; }
+    .hero-bg-num { font-size:180px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══ -->
+<header class="masthead">
+  <div class="masthead-brand"><strong>COI</strong> · Curso Claude Agosto 2025</div>
+  <nav class="masthead-nav">
+    <a href="#semana1" class="nav-semana s1h">S1 Fundamentos</a>
+    <a href="#semana2" class="nav-semana s2h">S2 Técnicas</a>
+    <a href="#semana3" class="nav-semana s3h">S3 Producción</a>
+    <a href="#semana4" class="nav-semana s4h">S4 Automatización</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg-num">20</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Itinerario completo del curso</div>
+    <h1>Claude desde Casa<br><em>Agosto 2025</em></h1>
+    <p class="hero-subtitle">Veinte sesiones de una hora. Cuatro semanas. Un sistema de producción intelectual para Community of Insurance, documentado y operativo.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-num">20</div>
+        <div class="hs-label">Sesiones</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">4</div>
+        <div class="hs-label">Semanas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">20</div>
+        <div class="hs-label">Plantillas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">1h</div>
+        <div class="hs-label">Por sesión</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">4</div>
+        <div class="hs-label">Entregables</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SEMANA 1
+═══════════════════════════════════════════════ -->
+<section class="semana-section" id="semana1">
+  <div class="semana-head s1">
+    <div class="semana-head-bg">1</div>
+    <div class="semana-inner">
+      <div>
+        <div class="semana-num">Semana 1 · Días 1–5</div>
+        <div class="semana-titulo">Fundamentos: cómo funciona<br>Claude y cómo hablarle</div>
+        <div class="semana-enfoque">De la curiosidad a la comprensión real del modelo. Sin mitos, sin magia: mecanismos concretos y primeras técnicas.</div>
+      </div>
+      <div class="semana-rango">
+        <div class="semana-fechas">4–8 ago 2025</div>
+        <div class="semana-entregable">↓ Entregable: Biblioteca P01–P05</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sesiones-grid">
+    <div class="sesiones-inner">
+
+      <a class="sesion-row" href="sesion-01-claude.html">
+        <div class="sn-num" style="color:var(--s1)">01</div>
+        <div class="sn-body">
+          <div class="sn-dia">Lunes 4 agosto</div>
+          <div class="sn-titulo">Qué es Claude y en qué se diferencia de un buscador</div>
+          <div class="sn-subtitulo">El modelo de lenguaje explicado sin tecnicismos. Por qué no es Google y por qué importa saberlo.</div>
+          <div class="sn-chips">
+            <span class="chip chip-navy">Concepto</span>
+            <span class="chip chip-gray">Nivel inicial</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P01 · Contexto COI</div>
+          <a class="sn-link" href="sesion-01-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-02-claude.html">
+        <div class="sn-num" style="color:var(--s1)">02</div>
+        <div class="sn-body">
+          <div class="sn-dia">Martes 5 agosto</div>
+          <div class="sn-titulo">La ventana de contexto: qué es, cuánto dura, cómo aprovecharlo</div>
+          <div class="sn-subtitulo">La limitación más importante de Claude, convertida en herramienta. Pre-resumen de intención.</div>
+          <div class="sn-chips">
+            <span class="chip chip-navy">Concepto</span>
+            <span class="chip chip-gold">Técnica clave</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P02 · Pre-intención</div>
+          <a class="sn-link" href="sesion-02-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-03-claude.html">
+        <div class="sn-num" style="color:var(--s1)">03</div>
+        <div class="sn-body">
+          <div class="sn-dia">Miércoles 6 agosto</div>
+          <div class="sn-titulo">Alucinaciones: por qué Claude inventa y cómo evitarlo</div>
+          <div class="sn-subtitulo">El riesgo más crítico para el trabajo editorial. Protocolo anti-alucinación para datos del mercado asegurador.</div>
+          <div class="sn-chips">
+            <span class="chip chip-coral">Riesgo</span>
+            <span class="chip chip-green">Protocolo</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P03 · Anti-alucinación</div>
+          <a class="sn-link" href="sesion-03-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-04-claude.html">
+        <div class="sn-num" style="color:var(--s1)">04</div>
+        <div class="sn-body">
+          <div class="sn-dia">Jueves 7 agosto</div>
+          <div class="sn-titulo">Las fortalezas nativas de Claude aplicadas a COI</div>
+          <div class="sn-subtitulo">Qué hace Claude mejor que cualquier otra herramienta. Mapa de casos de uso reales para Insur·Insights.</div>
+          <div class="sn-chips">
+            <span class="chip chip-green">Fortalezas</span>
+            <span class="chip chip-navy">Aplicación COI</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P04 · Revisión editorial</div>
+          <a class="sn-link" href="sesion-04-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row cierre" href="sesion-05-claude.html">
+        <div class="sn-num" style="color:var(--s1)">05</div>
+        <div class="sn-body">
+          <div class="sn-dia">Viernes 8 agosto · Cierre Semana 1</div>
+          <div class="sn-titulo">El framework RTCFR: Rol, Tarea, Contexto, Formato, Restricción</div>
+          <div class="sn-subtitulo">La arquitectura de prompt que lo cambia todo. Aplicación inmediata a cinco tareas reales de COI.</div>
+          <div class="sn-chips">
+            <span class="chip chip-gold">Framework RTCFR</span>
+            <span class="chip chip-green">Entregable S1</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P05 · RTCFR</div>
+          <a class="sn-link" href="sesion-05-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SEMANA 2
+═══════════════════════════════════════════════ -->
+<section class="semana-section" id="semana2">
+  <div class="semana-head s2">
+    <div class="semana-head-bg">2</div>
+    <div class="semana-inner">
+      <div>
+        <div class="semana-num">Semana 2 · Días 6–10</div>
+        <div class="semana-titulo">Técnicas avanzadas de<br>prompting profesional</div>
+        <div class="semana-enfoque">De usuario ocasional a operador experto. Las cinco técnicas que definen el prompting de nivel profesional.</div>
+      </div>
+      <div class="semana-rango">
+        <div class="semana-fechas">11–18 ago 2025</div>
+        <div class="semana-entregable">↓ Entregable: Flujo editorial + Proyecto COI</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sesiones-grid">
+    <div class="sesiones-inner">
+
+      <a class="sesion-row" href="sesion-06-claude.html">
+        <div class="sn-num" style="color:var(--c06)">06</div>
+        <div class="sn-body">
+          <div class="sn-dia">Martes 12 agosto</div>
+          <div class="sn-titulo">Chain of Thought: hacer que Claude piense en voz alta</div>
+          <div class="sn-subtitulo">La técnica más potente para tareas complejas. Razonamiento paso a paso antes de responder.</div>
+          <div class="sn-chips">
+            <span class="chip chip-navy">Chain of Thought</span>
+            <span class="chip chip-gold">Análisis</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P06 · CoT Analítico</div>
+          <a class="sn-link" href="sesion-06-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-07-claude.html">
+        <div class="sn-num" style="color:var(--c07)">07</div>
+        <div class="sn-body">
+          <div class="sn-dia">Miércoles 13 agosto</div>
+          <div class="sn-titulo">Few-Shot Prompting: enseñar con ejemplos, no con instrucciones</div>
+          <div class="sn-subtitulo">Capturar la voz editorial de Insur·Insights mostrando ejemplos reales. La herramienta editorial más poderosa.</div>
+          <div class="sn-chips">
+            <span class="chip chip-navy">Few-Shot</span>
+            <span class="chip chip-gold">Voz editorial</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P07 · Few-Shot COI</div>
+          <a class="sn-link" href="sesion-07-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-08-claude.html">
+        <div class="sn-num" style="color:var(--c08)">08</div>
+        <div class="sn-body">
+          <div class="sn-dia">Jueves 14 agosto</div>
+          <div class="sn-titulo">Proyectos de Claude: el contexto que no tienes que repetir nunca</div>
+          <div class="sn-subtitulo">Configurar el Proyecto COI Editorial con instrucciones, estilo y documentos permanentes.</div>
+          <div class="sn-chips">
+            <span class="chip chip-green">Proyectos</span>
+            <span class="chip chip-navy">Contexto persistente</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P08 · Proyecto COI</div>
+          <a class="sn-link" href="sesion-08-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-09-claude.html">
+        <div class="sn-num" style="color:var(--c09)">09</div>
+        <div class="sn-body">
+          <div class="sn-dia">Viernes 15 agosto</div>
+          <div class="sn-titulo">Artefactos y entregas: el formato correcto para cada tarea</div>
+          <div class="sn-subtitulo">Tabla, texto plano, resumen ejecutivo, código. Iteración precisa vs. reescritura desde cero.</div>
+          <div class="sn-chips">
+            <span class="chip chip-coral">Formatos</span>
+            <span class="chip chip-gold">Iteración</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P09 · Menú formatos</div>
+          <a class="sn-link" href="sesion-09-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row cierre" href="sesion-10-claude.html">
+        <div class="sn-num" style="color:var(--c10)">10</div>
+        <div class="sn-body">
+          <div class="sn-dia">Lunes 18 agosto · Cierre Semana 2</div>
+          <div class="sn-titulo">Consolidación y entregable: el prompt maestro COI</div>
+          <div class="sn-subtitulo">Integrar RTCFR + Few-Shot + CoT + formato. Manual de operaciones COI con Claude documentado.</div>
+          <div class="sn-chips">
+            <span class="chip chip-gold">Integración</span>
+            <span class="chip chip-green">Entregable S2</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P10 · Integrador</div>
+          <a class="sn-link" href="sesion-10-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SEMANA 3
+═══════════════════════════════════════════════ -->
+<section class="semana-section" id="semana3">
+  <div class="semana-head s3">
+    <div class="semana-head-bg">3</div>
+    <div class="semana-inner">
+      <div>
+        <div class="semana-num">Semana 3 · Días 11–15</div>
+        <div class="semana-titulo">Producción real: de dato<br>a entregable publicable</div>
+        <div class="semana-enfoque">Cada sesión produce un resultado que podrías publicar o entregar directamente. Nada hipotético.</div>
+      </div>
+      <div class="semana-rango">
+        <div class="semana-fechas">19–25 ago 2025</div>
+        <div class="semana-entregable">↓ Entregable: Informe de mercado COI</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sesiones-grid">
+    <div class="sesiones-inner">
+
+      <a class="sesion-row" href="sesion-11-claude.html">
+        <div class="sn-num" style="color:var(--c11)">11</div>
+        <div class="sn-body">
+          <div class="sn-dia">Martes 19 agosto</div>
+          <div class="sn-titulo">Análisis de documentos largos: PDFs, informes y el arte de preguntar bien</div>
+          <div class="sn-subtitulo">Swiss Re Sigma, MAPFRE Economics, estudios ICEA. Cinco estrategias para extraer valor real de un informe.</div>
+          <div class="sn-chips">
+            <span class="chip chip-navy">Documentos PDF</span>
+            <span class="chip chip-gold">Protocolo 5 pasos</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P11 · Análisis documental</div>
+          <a class="sn-link" href="sesion-11-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-12-claude.html">
+        <div class="sn-num" style="color:var(--c12)">12</div>
+        <div class="sn-body">
+          <div class="sn-dia">Miércoles 20 agosto</div>
+          <div class="sn-titulo">Búsqueda web integrada: datos actuales, fuentes verificables, tiempo real</div>
+          <div class="sn-subtitulo">Claude con acceso a Internet. Cuándo usarlo, cuándo no, y cómo verificar antes de publicar.</div>
+          <div class="sn-chips">
+            <span class="chip chip-green">Búsqueda web</span>
+            <span class="chip chip-coral">Verificación</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P12 · Búsqueda web COI</div>
+          <a class="sn-link" href="sesion-12-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-13-claude.html">
+        <div class="sn-num" style="color:var(--c13)">13</div>
+        <div class="sn-body">
+          <div class="sn-dia">Jueves 21 agosto</div>
+          <div class="sn-titulo">Flujo editorial completo: de dato a artículo publicable en una sesión</div>
+          <div class="sn-subtitulo">El flujo de seis fases que integra todo lo aprendido. 40 minutos de práctica, un artículo real como resultado.</div>
+          <div class="sn-chips">
+            <span class="chip chip-coral">Flujo 6 fases</span>
+            <span class="chip chip-gold">Integrador</span>
+            <span class="chip chip-green">Producción</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P13 · Flujo editorial</div>
+          <a class="sn-link" href="sesion-13-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-14-claude.html">
+        <div class="sn-num" style="color:var(--c14)">14</div>
+        <div class="sn-body">
+          <div class="sn-dia">Viernes 22 agosto</div>
+          <div class="sn-titulo">Informes estructurados: arquitectura, jerarquía y análisis de mercado</div>
+          <div class="sn-subtitulo">La técnica de los dos prompts: arquitectura primero, desarrollo después. Cuatro tipos de informe COI.</div>
+          <div class="sn-chips">
+            <span class="chip chip-navy">Arquitectura</span>
+            <span class="chip chip-gold">Informes</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P14 · Informe estructurado</div>
+          <a class="sn-link" href="sesion-14-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row cierre" href="sesion-15-claude.html">
+        <div class="sn-num" style="color:var(--c15)">15</div>
+        <div class="sn-body">
+          <div class="sn-dia">Lunes 25 agosto · Cierre Semana 3</div>
+          <div class="sn-titulo">Cierre de Semana 3: informe de mercado real como entregable</div>
+          <div class="sn-subtitulo">Informe de tres secciones publicable bajo marca COI. 15 plantillas acumuladas en la Biblioteca.</div>
+          <div class="sn-chips">
+            <span class="chip chip-green">Informe mercado</span>
+            <span class="chip chip-gold">Entregable S3</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P15 · Informe mercado</div>
+          <a class="sn-link" href="sesion-15-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SEMANA 4
+═══════════════════════════════════════════════ -->
+<section class="semana-section" id="semana4">
+  <div class="semana-head s4">
+    <div class="semana-head-bg">4</div>
+    <div class="semana-inner">
+      <div>
+        <div class="semana-num">Semana 4 · Días 16–20</div>
+        <div class="semana-titulo">Automatización y<br>flujos avanzados</div>
+        <div class="semana-enfoque">El nivel final: flujos encadenados, ponencias, gestión del conocimiento y el sistema personal COI completo.</div>
+      </div>
+      <div class="semana-rango">
+        <div class="semana-fechas">26 ago–1 sep 2025</div>
+        <div class="semana-entregable">↓ Entregable: Sistema Personal COI V1.0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sesiones-grid">
+    <div class="sesiones-inner">
+
+      <a class="sesion-row" href="sesion-16-claude.html">
+        <div class="sn-num" style="color:var(--c16)">16</div>
+        <div class="sn-body">
+          <div class="sn-dia">Martes 26 agosto</div>
+          <div class="sn-titulo">Prompts encadenados: flujos de trabajo que se ejecutan solos</div>
+          <div class="sn-subtitulo">La salida de cada paso es la entrada del siguiente. Cuatro patrones: Amplificación, Destilación, Transformación, Refinamiento.</div>
+          <div class="sn-chips">
+            <span class="chip chip-gold">Encadenamiento</span>
+            <span class="chip chip-navy">Flujos</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P16 · Flujo amplificación</div>
+          <a class="sn-link" href="sesion-16-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-17-claude.html">
+        <div class="sn-num" style="color:var(--c17)">17</div>
+        <div class="sn-body">
+          <div class="sn-dia">Miércoles 27 agosto</div>
+          <div class="sn-titulo">Ponencias y presentaciones: de la idea al guion en una sesión</div>
+          <div class="sn-subtitulo">Flujo de cinco fases para preparar cualquier ponencia. Caso real: APECOSE Lima, 1 octubre 2025.</div>
+          <div class="sn-chips">
+            <span class="chip chip-navy">Ponencias</span>
+            <span class="chip chip-coral">APECOSE Lima</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P17 · Flujo ponencia</div>
+          <a class="sn-link" href="sesion-17-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-18-claude.html">
+        <div class="sn-num" style="color:var(--c18)">18</div>
+        <div class="sn-body">
+          <div class="sn-dia">Jueves 28 agosto</div>
+          <div class="sn-titulo">Gestión del conocimiento COI: notas, síntesis y memoria institucional</div>
+          <div class="sn-subtitulo">Capturar reuniones, sintetizar lecturas, identificar patrones mensuales. El conocimiento que no se captura se pierde.</div>
+          <div class="sn-chips">
+            <span class="chip chip-green">Conocimiento</span>
+            <span class="chip chip-gold">Síntesis</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P18 · Gestión COI</div>
+          <a class="sn-link" href="sesion-18-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row" href="sesion-19-claude.html">
+        <div class="sn-num" style="color:var(--c19)">19</div>
+        <div class="sn-body">
+          <div class="sn-dia">Viernes 29 agosto</div>
+          <div class="sn-titulo">Personalización avanzada: adaptar Claude a cualquier tarea nueva</div>
+          <div class="sn-subtitulo">El meta-prompt. El marco de tres preguntas. Cinco casos de uso nuevos para COI. La meta-habilidad.</div>
+          <div class="sn-chips">
+            <span class="chip chip-navy">Meta-prompt</span>
+            <span class="chip chip-gold">Personalización</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P19 · Meta-prompt</div>
+          <a class="sn-link" href="sesion-19-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+      <a class="sesion-row cierre" href="sesion-20-claude.html">
+        <div class="sn-num" style="color:var(--gold)">20</div>
+        <div class="sn-body">
+          <div class="sn-dia">Lunes 1 septiembre · Cierre del curso</div>
+          <div class="sn-titulo">El sistema personal COI con Claude está completo</div>
+          <div class="sn-subtitulo">20 plantillas. Sistema Personal V1.0. Manifiesto de cierre. Plantilla de revisión anual para dentro de doce meses.</div>
+          <div class="sn-chips">
+            <span class="chip chip-gold">Sistema V1.0</span>
+            <span class="chip chip-green">Cierre del curso</span>
+            <span class="chip chip-coral">20 plantillas</span>
+          </div>
+        </div>
+        <div class="sn-right">
+          <div class="sn-plantilla">P20 · Sistema personal</div>
+          <a class="sn-link" href="sesion-20-claude.html">Abrir <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg></a>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ LEYENDA ══ -->
+<div class="leyenda">
+  <div class="leyenda-inner">
+    <div class="leyenda-bloque">
+      <h4>Estructura de cada sesión</h4>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#183577"></div>15' Concepto</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#C89646"></div>30' Práctica real</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#1A7F4E"></div>10' Reflexión y técnica avanzada</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#E4382E"></div>5' Plantilla para Biblioteca COI</div>
+    </div>
+    <div class="leyenda-bloque">
+      <h4>Semanas</h4>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#183577"></div>S1 · Fundamentos</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#5B2D8E"></div>S2 · Técnicas avanzadas</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#7A1020"></div>S3 · Producción real</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#7A4A00"></div>S4 · Automatización</div>
+    </div>
+    <div class="leyenda-bloque">
+      <h4>Entregables por semana</h4>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#183577"></div>S1 → Biblioteca P01–P05</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#5B2D8E"></div>S2 → Manual de operaciones + Proyecto</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#7A1020"></div>S3 → Informe de mercado COI</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#7A4A00"></div>S4 → Sistema Personal COI V1.0</div>
+    </div>
+    <div class="leyenda-bloque">
+      <h4>Biblioteca de prompts</h4>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#183577"></div>P01–P05 · Operativos base</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#5B2D8E"></div>P06–P10 · Técnicas avanzadas</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#7A1020"></div>P11–P15 · Producción</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#7A4A00"></div>P16–P20 · Automatización</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="sf-left"><strong>Community of Insurance</strong> · Carlos Biurrun Murillo · Agosto 2025</div>
+  <div class="sf-right">20 sesiones · 20 plantillas · 4 entregables reales</div>
+</footer>
+
+</body>
+</html>
