@@ -193,4 +193,4 @@ Ver `docs/nivel-2-avanzado.md`
 
 Curso diseñado para uso interno de Community of Insurance (COI).  
 © 2025 Carlos Biurrun Murillo · Community of Insurance  
-`carlos.biurrun@communityofinsurance.com`
+`carlos.biurrun@communityofinsurance.com` 
