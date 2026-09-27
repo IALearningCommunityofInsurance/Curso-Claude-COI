@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S19 · Personalización avanzada: adaptar Claude a cualquier tarea nueva · Curso Claude COI</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+:root{--ink:#0E0E0E;--paper:#F7F5F0;--gold:#C89646;--navy:#183577;--coral:#E4382E;--smoke:#E8E5DE;--mid:#7A7570;--white:#FFFFFF;--semana:#005566;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
+.topbar{background:var(--ink);padding:0 48px;height:52px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:100;}
+.topbar-brand{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;}
+.topbar-brand strong{color:var(--gold);}
+.topbar-nav{display:flex;gap:8px;}
+.topbar-nav a{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.4);text-decoration:none;padding:4px 12px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;letter-spacing:1px;text-transform:uppercase;transition:all 0.15s;}
+.topbar-nav a:hover{border-color:var(--gold);color:var(--gold);}
+.hero{background:var(--semana);padding:60px 48px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:48px 48px;}
+.hero-bg{position:absolute;right:-20px;bottom:-40px;font-family:'Playfair Display',serif;font-size:280px;font-weight:900;color:rgba(255,255,255,0.05);line-height:1;user-select:none;}
+.hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--gold);flex-shrink:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,46px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.5px;margin-bottom:12px;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.55);max-width:560px;line-height:1.5;margin-top:8px;}
+.hero-meta{display:flex;gap:0;margin-top:36px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;overflow:hidden;max-width:520px;}
+.meta-item{flex:1;padding:14px 16px;border-right:1px solid rgba(255,255,255,0.1);text-align:center;}
+.meta-item:last-child{border-right:none;}
+.meta-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:3px;}
+.meta-lbl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.content{max-width:860px;margin:0 auto;padding:0 48px 80px;}
+.bloque{margin-top:56px;}
+.bloque-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--smoke);}
+.bloque-icono{width:40px;height:40px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;flex-shrink:0;}
+.icono-c{background:var(--navy);color:#fff;}
+.icono-p{background:var(--gold);color:#fff;}
+.icono-t{background:var(--coral);color:#fff;}
+.bloque-titulo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.bloque-tiempo{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.bloque-body h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);margin:28px 0 10px;}
+.bloque-body h4{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mid);margin:24px 0 8px;}
+.bloque-body p{font-size:15px;color:#2A2A2A;margin-bottom:14px;}
+.bloque-body ul,.bloque-body ol{padding-left:20px;margin-bottom:14px;}
+.bloque-body li{font-size:15px;color:#2A2A2A;margin-bottom:6px;}
+.bloque-body strong{color:var(--ink);}
+.bloque-body table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+.bloque-body th{background:var(--ink);color:#fff;padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.bloque-body td{padding:10px 14px;border-bottom:1px solid var(--smoke);vertical-align:top;}
+.bloque-body tr:nth-child(even) td{background:rgba(0,0,0,0.02);}
+.bloque-body pre{background:var(--ink);color:#E8D5A0;padding:20px 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;overflow-x:auto;margin:16px 0;border-left:3px solid var(--gold);white-space:pre-wrap;}
+.bloque-body code{font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:2px;color:var(--ink);}
+.bloque-body blockquote{border-left:3px solid var(--gold);padding:12px 20px;margin:16px 0;background:rgba(200,150,70,0.06);border-radius:0 4px 4px 0;}
+.bloque-body blockquote p{color:var(--mid);font-style:italic;margin:0;}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:20px;}
+.nav-bottom{background:var(--ink);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--gold);margin-top:60px;}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;padding:10px 18px;border:1px solid rgba(255,255,255,0.15);border-radius:3px;transition:all 0.15s;}
+.nav-btn:hover{border-color:var(--gold);color:var(--gold);}
+.nav-center{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:2px;text-transform:uppercase;text-align:center;}
+.nav-center a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.nav-center a:hover{color:var(--gold);}
+@media(max-width:700px){.topbar{padding:0 20px;}.hero{padding:40px 20px 36px;}.content{padding:0 20px 60px;}.nav-bottom{padding:24px 20px;flex-direction:column;gap:16px;}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-brand"><strong>COI</strong> · Curso Claude Agosto 2025</div>
+  <nav class="topbar-nav">
+    <a href="itinerario-curso-claude-agosto.html">&#8592; Itinerario</a>
+    <a href="sesion-18-claude.html">S18</a>
+    <a href="sesion-20-claude.html">S20</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-bg">19</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Sesión 19 · Viernes 29 agosto 2025 · Semana 4 · Automatización</div>
+    <h1>Personalización avanzada:<em> adaptar Claude a cualquier tarea nueva</em></h1>
+    <p class="hero-sub">El meta-prompt. El marco de tres preguntas. Cinco casos de uso nuevos para COI. La meta-habilidad.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><div class="meta-val">15'</div><div class="meta-lbl">Concepto</div></div>
+      <div class="meta-item"><div class="meta-val">30'</div><div class="meta-lbl">Práctica</div></div>
+      <div class="meta-item"><div class="meta-val">10'</div><div class="meta-lbl">Reflexión</div></div>
+      <div class="meta-item"><div class="meta-val">P19</div><div class="meta-lbl">Plantilla</div></div>
+    </div>
+  </div>
+</section>
+<main class="content">
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-c">15'</div>
+      <div><div class="bloque-titulo">Concepto central</div><div class="bloque-tiempo">Teoría y mecanismo — 15 minutos</div></div>
+    </div>
+    <div class="bloque-body"><p>El meta-prompt es la habilidad de usar Claude para generar el prompt correcto para una tarea nueva. En lugar de construir el RTCFR desde cero, le preguntas a Claude cómo preguntarle a Claude.</p><h3>El marco de tres preguntas para cualquier tarea nueva</h3><ol><li>¿Qué quiero conseguir exactamente? → <strong>Tarea</strong></li><li>¿Qué necesita saber Claude para hacerlo bien? → <strong>Rol + Contexto</strong></li><li>¿Cómo quiero que estructure la salida? → <strong>Formato + Restricciones</strong></li></ol><h3>Cinco casos de uso nuevos para COI</h3><ol><li>Análisis de competencia editorial</li><li>Evaluación de propuestas de colaboración</li><li>Preparación de entrevistas con directivos</li><li>Análisis de feedback de lectores</li><li>Planificación de la agenda editorial trimestral</li></ol><p><strong>La meta-habilidad:</strong> Una vez que sabes construir un prompt RTCFR para cualquier tarea, no necesitas más plantillas: puedes generar las tuyas.</p></div>
+  </div>
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-p">30'</div>
+      <div><div class="bloque-titulo">Práctica real</div><div class="bloque-tiempo">Ejercicios con material COI — 30 minutos</div></div>
+    </div>
+    <div class="bloque-body"><h3>El meta-prompt en acción</h3><pre>PASO 1 - DISEÑO DEL PROMPT:
+"Necesito hacer lo siguiente con Claude: [describe la tarea en lenguaje natural].
+No lo hagas aún. Primero diseña el prompt RTCFR óptimo para esta tarea.
+El prompt debe incluir: rol apropiado, tarea clara, contexto necesario,
+formato del output y las 2-3 restricciones más importantes."
+
+PASO 2 - AJUSTE:
+"El prompt propuesto es bueno pero quiero que ajustes:
+- El rol: más específico en [aspecto]
+- Añade también esta restricción: [restricción adicional]"
+
+PASO 3 - EJECUCIÓN:
+"Bien, ahora aplica ese prompt para realizar la tarea con esta información: [datos]"
+
+PASO 4 - META-APRENDIZAJE:
+"¿Qué hizo este prompt que lo hace más efectivo que uno básico?
+Identifica los 2-3 elementos que más impacto tuvieron en el resultado."</pre></div>
+  </div>
+  <div class="bloque">
+    <div class="bloque-header">
+      <div class="bloque-icono icono-t">5'</div>
+      <div><div class="bloque-titulo">Plantilla para la Biblioteca COI</div><div class="bloque-tiempo">Tu activo permanente de esta sesión</div></div>
+    </div>
+    <div class="bloque-body">
+      <div class="pill">P19 · Meta-prompt</div>
+      <pre>META-PROMPT COI (P19)
+
+PARA CUALQUIER TAREA NUEVA:
+
+PASO 1 - DISEÑO:
+"Necesito realizar la siguiente tarea: [descripción en lenguaje natural].
+Diseña el prompt RTCFR óptimo. No ejecutes la tarea aún.
+Incluye: rol / tarea clara / contexto / formato de output / 2-3 restricciones."
+
+PASO 2 - AJUSTE:
+"Ajusta el prompt: [lista de modificaciones específicas]"
+
+PASO 3 - EJECUCIÓN:
+"Aplica el prompt diseñado con esta información: [datos/material]"
+
+EL MARCO DE 3 PREGUNTAS (antes de cualquier prompt):
+1. ¿Qué quiero conseguir exactamente? → Tarea
+2. ¿Qué necesita saber Claude para hacerlo bien? → Rol + Contexto
+3. ¿Cómo quiero que estructure la salida? → Formato + Restricciones</pre>
+    </div>
+  </div>
+</main>
+<nav class="nav-bottom">
+  <a class="nav-btn" href="sesion-18-claude.html">&#8592; S18</a>
+  <div class="nav-center"><a href="itinerario-curso-claude-agosto.html">Ver itinerario completo</a><br><span>Sesión 19 de 20</span></div>
+  <a class="nav-btn" href="sesion-20-claude.html">S20 &#8594;</a>
+</nav>
+</body>
+</html>
