@@ -1,10 +1,10 @@
-# Curso Claude desde Casa · COI Agosto 2025
+# Curso Claude desde Casa · COI Agosto 2026
 
 > **20 sesiones · 4 semanas · 20 plantillas · 4 entregables reales**  
 > Un sistema de producción intelectual para Community of Insurance, documentado y operativo.
 
 **Autor:** Carlos Biurrun Murillo — Community of Insurance (COI)  
-**Período:** 4 agosto – 1 septiembre 2025  
+**Período:** Agosto 2026 (4 semanas)  
 **Nivel:** Iniciación → Avanzado progresivo
 
 ---
@@ -192,5 +192,5 @@ Ver `docs/nivel-2-avanzado.md`
 ## Licencia y uso
 
 Curso diseñado para uso interno de Community of Insurance (COI).  
-© 2025 Carlos Biurrun Murillo · Community of Insurance  
-`carlos.biurrun@communityofinsurance.com` 
+© 2026 Carlos Biurrun Murillo · Community of Insurance  
+`carlos.biurrun@communityofinsurance.com`
